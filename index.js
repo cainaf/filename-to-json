@@ -13,7 +13,7 @@ var readFiles = function(path, readHiddenFiles, callback) {
 	fs.exists(path, function (exists) {
 		if(exists) {
 			walk.walkSync(path, function(basedir, filename, stat, next) {
-				if(!readHiddenFiles || filename.charAt(0) !== '.') {
+				if(readHiddenFiles || filename.charAt(0) !== '.') {
 					files.push(filename);	
 				}
 			}, function(err) {
